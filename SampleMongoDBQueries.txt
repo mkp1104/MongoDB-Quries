@@ -1,0 +1,83 @@
+show dbs
+
+show collections
+
+db.zips.find()
+
+db.zips.find().pretty()
+
+db.zips.find({"city":"AGAWAM"}).pretty()
+
+db.zips.insert([{"_id":"MkpAdd1","city":"Asansol","state":"west Bengal"},{"_id":"MkpAdd2","city":"Bangalore","state":"Karnataka"}])
+
+db.zips.find({$or:[{"_id":"MkpAdd1","city":"Asansol","state":"west Bengal"},{"_id":"MkpAdd2","city":"Bangalore","state":"Karnataka"}]})
+
+db.zips.find({"$or":[{_id:"MkpAdd1",city:"Asansol","state":"west Bengal"},{"_id":"MkpAdd2","city":"Bangalore","state":"Karnataka"}]})
+
+db.zips.find({"$or":[{_id:"MkpAdd1",city:"Asansol","state":"west Bengal"},{"_id":"MkpAdd2","city":Bangalore,"state":"Karnataka"}]}) - Wrong
+
+db.zips.find({pop:{$gt:100}}).pretty()
+
+db.zips.find({"pop":{$gt:100}}).pretty()
+
+db.zips.find({"pop":{"$gt":100}}).pretty()
+
+db.zips.find({"pop":{$gte:15338}}).pretty()
+
+db.zips.find({"pop":{$lte:15338}}).pretty()
+
+db.zips.find({"pop":{$lt:15338}}).pretty()
+
+db.zips.find({"pop":{$ne:15338}}).pretty()
+
+db.zips.update({"_id":"01022"},{$set:{"city":"Asansol"}})
+
+db.zips.update({"_id":"01022"},{$set:{"city":"Asansol"}},{multi:true})
+
+db.zips.save({"_id":"01022","city":"Bangalore"})
+
+db.zips.save({"_id":"01022","city":"Bangalore"})
+
+db.zips.remove({"_id":"01022"})
+
+db.zips.remove({"_id":"01022"},1)
+
+db.zips.find({"_id":"01022"})
+
+db.zips.find({},{"city" : 1,"_id":0})
+
+db.zips.find({},{city : 1,"_id":0})
+
+db.zips.find({},{"city" : 1,_id:0})
+
+db.zips.find({}).limit(10)
+
+db.zips.find({}).limit(10).skip(2)-will show 10 result skipping 1st 2 records.
+
+db.zips.find({},{"city":1,"_id":0}).sort({"_id":-1})
+
+db.zips.find({},{"city":1,"_id":0}).sort("_id":-1)-wrong(every values in bteween "(" and ")" should be inside "{}")
+
+db.zips.find("_id" : "01001")-wrong(every values in bteween "(" and ")" should be inside "{}")
+
+create index : 
+
+db.zips.aggregate([{$group : {"_id": "$state", "pop": {$sum : 1}}}])
+
+db.zips.aggregate([{$group : {"_id": "$state", "total": {$sum : 1}}}])
+
+db.zips.aggregate([{$group : {"_id": "$_id", "total": {$sum : 1}}}])
+
+db.zips.aggregate([{$group : {"_id": $_id, "total": {$sum : 1}}}])-Wrong
+
+db.zips.aggregate([{$group : {"_id": "$state", "avg": {$avg : 1}}}])
+
+db.zips.aggregate([{$group : {"_id": "$state", "min": {$min : 1}}}])
+
+db.zips.aggregate([{$group : {"_id": "$state", "min": {$min : 1}}}])
+
+db.zips.aggregate([{$group : {"_id": "$state", "max": {$max : 1}}}])
+
+
+
+
