@@ -104,6 +104,7 @@ Syntax:
 # mongooplog  --from mongodb0.example.net --host mongodb1.example.net
 # mongoperf : check disk I/O performance independently of MongoDB
 # 
+# Aggregation f/w limitation: in sharding we can't achive 100% palleral scaling or hrizontal scaling like hadoop,in $group or $sort pipeline it can be done only at 1 sharding node.
 # 
 # 
 # 
